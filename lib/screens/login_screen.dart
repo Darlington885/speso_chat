@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +18,7 @@ import '../widgets/input_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
-  static const routeName = 'login';
+  static const routeName = '/login';
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -28,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -117,11 +118,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           hint: "Email address",
                           onChanged: (text) {
                             store.email = text;
-                            if ( emailController.text.length>3 ) {
-                             store.proceedButtonActive = true;
-                            } else {
-                              store.proceedButtonActive = false;
-                            }
+                            // if ( emailController.text.length>3 ) {
+                            //  store.proceedButtonActive = true;
+                            // } else {
+                            //   store.proceedButtonActive = false;
+                            // }
                           },
                           message: store.error.email,
                           error: store.error.email != null,
@@ -143,11 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           obscureText:store.passwordVisible,
                           onChanged: (text) {
                             store.password = text;
-                            if (passwordController.text.length>3 ) {
-                              store.proceedButtonActive = true;
-                            } else {
-                              store.proceedButtonActive = false;
-                            }
                           },
                           suffixIcon: GestureDetector(
                               onTap: () => store.passwordVisible
@@ -177,23 +173,30 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: double.infinity,
                           child: Button(
                             text: 'Log In',
-                            onPressed:  store.proceedButtonActive
-                                ? () {
+                            onPressed:  //store.proceedButtonActive ?
+                                () {
                               FocusScope.of(context).unfocus();
 
                               if(store.hasErrors){
-                                return;
+                              }  else if (emailController.text == null || emailController.text == " ") {
+                                registerStore.error.email =
+                                "Please enter your Password";
+                              }  else if (passwordController.text == null ||
+                                  passwordController.text == " " ) {
+                                registerStore.error.password = "Please enter your Password";
                               }else {
                                 store.submit(context);
 
                               }
-                          }: null,
+                          },
+                          //: null,
                            loading: store.loading,
                             loaderColor: Colors.white,
                             textColor: Colors.white,
-                            color: store.proceedButtonActive
-                                ? AppColors.blueColor
-                                : AppColors.inactiveColor,
+                            color:
+                            //store.proceedButtonActive
+                                 AppColors.blueColor
+                               // : AppColors.inactiveColor,
                           ),
                         ),
                       ),

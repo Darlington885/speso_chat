@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
+// @dart=2.9
 part of 'registration_store.dart';
 
 // **************************************************************************
@@ -41,7 +41,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$emailAtom = Atom(name: '_RegisterStore.email',);
+  final _$emailAtom = Atom(name: '_RegisterStore.email',);
 
   @override
   String get email {
@@ -129,16 +129,6 @@ mixin _$RegisterStore on _RegisterStore, Store {
     }
   }
 
-  @override
-  void validateConfirmPassword(String value) {
-    final _$actionInfo = _$_RegisterStoreActionController.startAction(
-        name: '_RegisterStore.validateConfirmPassword');
-    try {
-      return super.validateConfirmPassword(value);
-    } finally {
-      _$_RegisterStoreActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   String toString() {

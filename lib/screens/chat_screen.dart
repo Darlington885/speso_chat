@@ -1,4 +1,4 @@
-
+// @dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,10 +7,11 @@ import 'package:speso_chat_app/constants/colors.dart';
 import 'package:speso_chat_app/constants/text_style.dart';
 import 'package:speso_chat_app/utils/alert_dialogs.dart';
 
+import '../utils/loader.dart';
 import '../widgets/input_field.dart';
 
-final _firestore = Firestore.instance;
-FirebaseUser loggedInUser;
+final _firestore = FirebaseFirestore.instance;
+User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static const String routeName  = '/chat';
@@ -32,10 +33,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser();
+      final user = await _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
+        //print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
@@ -127,18 +128,23 @@ class MessagesStream extends StatelessWidget {
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
-              child: CircularProgressIndicator(
-                backgroundColor: AppColors.blueColor,
+              child:
+              CircularProgressIndicator(
+               backgroundColor: AppColors.blueColor,
               ),
             );
           }
-          final messages = snapshot.data.documents.reversed;
+
+         final messages = snapshot.data.docs.reversed;
           List<MessageBubble> messageBubbles = [];
           for (var message in messages) {
-            final messageText = message.data['text'];
-            final messageSender = message.data['sender'];
+            // final messageText = message.data['text'];
+            // final messageSender = message.data['sender'];
 
-            final currentUser = loggedInUser.email;
+            final messageText = message.get('text');
+            final messageSender = message.get('sender');
+
+            final currentUser = loggedInUser?.email;
 
             final messageBubble = MessageBubble(
               text: messageText,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:speso_chat_app/screens/registration_screen.dart';
 
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
@@ -10,7 +11,7 @@ import '../utils/navigators.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
   static const routeName = '/splash';
 
   @override
@@ -35,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
         statusBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.blueColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

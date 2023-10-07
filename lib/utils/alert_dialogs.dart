@@ -12,7 +12,7 @@ import 'navigators.dart';
 
 
 class LogOutDialog extends StatefulWidget {
-  const LogOutDialog({Key key}) : super(key: key);
+  const LogOutDialog({Key? key}) : super(key: key);
 
   @override
   _LogOutDialogState createState() => _LogOutDialogState();
@@ -132,7 +132,7 @@ class CustomPopupDialog extends StatefulWidget {
   final String img;
   final VoidCallback onButtonPressed;
 
-  const CustomPopupDialog({this.title, this.description, this.buttonText, this.img, this.onButtonPressed});
+  const CustomPopupDialog({required this.title, required this.description, required this.buttonText, required this.img, required this.onButtonPressed});
 
 
   @override
@@ -373,7 +373,7 @@ openDialog(Widget widget, BuildContext context, {barrierDismissible = false,}) {
       });
 }
 
-void showCustomDialog(BuildContext context, String title,  String message) {
+void showCustomDialog(BuildContext context, String title,  String? message) {
   showDialog(
     barrierDismissible: true,
     context: context,
@@ -475,95 +475,95 @@ void showCustomDialog(BuildContext context, String title,  String message) {
   );
 }
 
-void showCustomSuccessDialog(BuildContext context, String title,  String message) {
-  showDialog(
-    barrierDismissible: false,
-    context: context,
-    builder: (BuildContext cxt) {
-      Future.delayed(Duration(seconds: 4), () {
-        Navigator.of(cxt).pop(true);
-      });
-      return Align(
-        alignment: Alignment.topCenter,
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(14),
-              bottomRight: Radius.circular(14),
-            ),
-            child: Material(
-              color: AppColors.blackColor,
-              // color: Colors.white,
-              shape: Border(
-                left: BorderSide(
-                  width: 4,
-                  //color: Color(0xFFE2494E).withOpacity(0.1),
-                  //color: AppColors.primarySecondaryColor,
-                  color: AppColors.inactiveColor,
-                ),
-
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          title,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            color: AppColors.whiteColor,
-                            fontFamily: AppFonts.Cabin,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14.0,
-                          ),
-                        ),
-
-                        Spacer(),
-
-                        InkWell(
-                            onTap:(){
-                              Navigator.of(cxt).pop();
-
-                            },
-                            child: Image.asset(assetImageCancel, height: 32, width: 32,)),
-                        SizedBox(
-                          width: 5,
-                        ),
-                      ],
-                    ),
-
-
-                    SizedBox(height: 8.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            message ?? "",
-
-                            style: TextStyle(
-                              color: AppColors.whiteColor,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: AppFonts.Cabin,
-                              fontSize: 12.0,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
+// void showCustomSuccessDialog(BuildContext context, String title,  String message) {
+//   showDialog(
+//     barrierDismissible: false,
+//     context: context,
+//     builder: (BuildContext cxt) {
+//       Future.delayed(Duration(seconds: 4), () {
+//         Navigator.of(cxt).pop(true);
+//       });
+//       return Align(
+//         alignment: Alignment.topCenter,
+//         child: Padding(
+//           padding: EdgeInsets.all(16),
+//           child: ClipRRect(
+//             borderRadius: const BorderRadius.only(
+//               topRight: Radius.circular(14),
+//               bottomRight: Radius.circular(14),
+//             ),
+//             child: Material(
+//               color: AppColors.blackColor,
+//               // color: Colors.white,
+//               shape: Border(
+//                 left: BorderSide(
+//                   width: 4,
+//                   //color: Color(0xFFE2494E).withOpacity(0.1),
+//                   //color: AppColors.primarySecondaryColor,
+//                   color: AppColors.inactiveColor,
+//                 ),
+//
+//               ),
+//               child: Padding(
+//                 padding: EdgeInsets.all(16),
+//                 child: Column(
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         Text(
+//                           title,
+//                           textAlign: TextAlign.start,
+//                           style: TextStyle(
+//                             color: AppColors.whiteColor,
+//                             fontFamily: AppFonts.Cabin,
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 14.0,
+//                           ),
+//                         ),
+//
+//                         Spacer(),
+//
+//                         InkWell(
+//                             onTap:(){
+//                               Navigator.of(cxt).pop();
+//
+//                             },
+//                             child: Image.asset(assetImageCancel, height: 32, width: 32,)),
+//                         SizedBox(
+//                           width: 5,
+//                         ),
+//                       ],
+//                     ),
+//
+//
+//                     SizedBox(height: 8.0),
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Expanded(
+//                           child: Text(
+//                             message ?? "",
+//
+//                             style: TextStyle(
+//                               color: AppColors.whiteColor,
+//                               fontWeight: FontWeight.w700,
+//                               fontFamily: AppFonts.Cabin,
+//                               fontSize: 12.0,
+//                             ),
+//                             textAlign: TextAlign.start,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
+// @dart=2.9
 part of 'login_store.dart';
 
 // **************************************************************************
@@ -41,7 +41,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
- final _$emailAtom = Atom(name: '_LoginStore.email',);
+  final _$emailAtom = Atom(name: '_LoginStore.email',);
 
   @override
   String get email {
@@ -56,7 +56,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-  final _$proceedButtonActiveAtom =
+ final _$proceedButtonActiveAtom =
       Atom(name: '_LoginStore.proceedButtonActive',);
 
   @override
@@ -72,8 +72,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_LoginStore.password',);
+   final _$passwordAtom = Atom(name: '_LoginStore.password',);
 
   @override
   String get password {
@@ -88,7 +87,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-  final _$_LoginStoreActionController =
+   final _$_LoginStoreActionController =
       ActionController(name: '_LoginStore',);
 
   @override
@@ -145,8 +144,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
               name: '_LoginErrorStore.hasErrors'))
           .value;
 
- final _$emailAtom =
-      Atom(name: '_LoginErrorStore.email',);
+ final _$emailAtom = Atom(name: '_LoginErrorStore.email',);
 
   @override
   String get email {
@@ -161,8 +159,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_LoginErrorStore.password',);
+  final _$passwordAtom = Atom(name: '_LoginErrorStore.password',);
 
   @override
   String get password {

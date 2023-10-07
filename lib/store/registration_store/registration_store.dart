@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:local_auth/local_auth.dart';
@@ -50,7 +51,8 @@ abstract class _RegisterStore with Store {
     else if (!isEmail(value))
       error.email = 'Enter a valid email';
     else
-      error.email = null;
+     error.email =null;
+
   }
 
   @action
@@ -58,14 +60,6 @@ abstract class _RegisterStore with Store {
     error.password =
     isNull(value) || value.isEmpty ? 'Password is required' : null;
   }
-
-
-  @action
-  void validateConfirmPassword(String value) {
-    error.password =
-    isNull(value) || value.isEmpty ? 'Confirm Password is required' : null;
-  }
-
 
 
   List<ReactionDisposer> _disposers;
@@ -126,14 +120,11 @@ class RegisterErrorStore = _RegisterErrorStore with _$RegisterErrorStore;
 
 abstract class _RegisterErrorStore with Store {
   @observable
-  String email;
+ String email;
 
   @observable
-  String password;
-
-  @observable
-  String confirmPassword;
+  String password = '';
 
   @computed
-  bool get hasErrors => email != null || password != null || confirmPassword != null;
+  bool get hasErrors => email != null || password != null;
 }

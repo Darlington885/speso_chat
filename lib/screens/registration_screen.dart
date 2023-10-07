@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:speso_chat_app/constants/colors.dart';
@@ -27,7 +29,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -113,12 +114,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         hint: "Email address",
                         onChanged: (text) {
                           registerStore.email = text.toLowerCase();
-                          if (text.contains("@") &&
-                              passwordController.text.length > 3) {
-                            registerStore.proceedButtonActive = true;
-                          } else {
-                            registerStore.proceedButtonActive = false;
-                          }
+                          // if (text.contains("@") &&
+                          //     passwordController.text.length > 3) {
+                          //   registerStore.proceedButtonActive = true;
+                          // } else {
+                          //   registerStore.proceedButtonActive = false;
+                          // }
                         },
                         message: registerStore.error.email,
                         error: registerStore.error.email != null,
@@ -149,11 +150,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         obscureText: registerStore.passwordVisible,
                         onChanged: (text) {
                           registerStore.password = text;
-                          if (passwordController.text.length > 5) {
-                            registerStore.proceedButtonActive = true;
-                          } else {
-                            registerStore.proceedButtonActive = false;
-                          }
                         },
                         suffixIcon: GestureDetector(
                             onTap:() =>  registerStore.passwordVisible = !registerStore.passwordVisible,
@@ -187,9 +183,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       builder: (ctx) => Container(
                         width: double.infinity,
                         child: Button(
+
                           text: 'Submit',
-                          onPressed: registerStore.proceedButtonActive
-                              ? () {
+                          onPressed:
+                          //registerStore.proceedButtonActive ?
+                              () {
                             FocusScope.of(context).unfocus();
 
                             if (registerStore.hasErrors) {
@@ -202,11 +200,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             }   else {
                               registerStore.submit(context);
                             }
-                          } : null,
+                          },
+                          //: null,
                           loading: registerStore.loading,
                           loaderColor: Colors.white,
                           textColor: Colors.white,
-                          color:  registerStore.proceedButtonActive ? AppColors.blueColor : AppColors.inactiveColor,
+                          color: AppColors.blueColor
                         ),
                       ),
                     ),

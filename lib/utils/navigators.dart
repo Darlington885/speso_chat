@@ -69,17 +69,17 @@ void popToFirst(BuildContext context) =>
 
 void popView(BuildContext context) => Navigator.of(context).pop();
 
-dynamic navigateTransparentRoute(BuildContext context, Widget route) {
-  return Navigator.of(context).push(TransparentRoute(
-    builder: (BuildContext context) => route,
-  ),
-  );
-}
+// dynamic navigateTransparentRoute(BuildContext context, Widget route) {
+//   return Navigator.of(context).push(TransparentRoute(
+//     builder: (BuildContext context) => route,
+//   ),
+//   );
+// }
 
 class TransparentRoute extends PageRoute<void> {
   TransparentRoute({
-    @required this.builder,
-    RouteSettings settings,
+    required this.builder,
+    required RouteSettings settings,
   })  : assert(builder != null),
         super(settings: settings, fullscreenDialog: false);
 
@@ -89,10 +89,10 @@ class TransparentRoute extends PageRoute<void> {
   bool get opaque => false;
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => true;

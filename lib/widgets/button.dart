@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
@@ -9,7 +7,7 @@ enum ButtonMode { text, outlined, contained }
 
 class Button extends StatelessWidget {
   const Button({
-    @required this.text,
+    this.text="",
     this.onPressed,
     this.color,
     this.textColor,
@@ -21,14 +19,14 @@ class Button extends StatelessWidget {
   });
 
   final String text;
-  final Function onPressed;
-  final ButtonMode mode;
-  final Color color;
-  final Color textColor;
-  final Color loaderColor;
-  final bool loading;
-  final bool disabled;
-  final BorderSide border;
+  final VoidCallback? onPressed;
+  final ButtonMode? mode;
+  final Color? color;
+  final Color? textColor;
+  final Color? loaderColor;
+  final bool? loading;
+  final bool? disabled;
+  final BorderSide? border;
 
   @override
   Widget build(BuildContext context) {
@@ -44,20 +42,24 @@ class Button extends StatelessWidget {
       return OutlinedButton(
         onPressed: (disabled == true || loading == true) ? null : onPressed,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0))),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.0))),
           elevation: MaterialStateProperty.all(0),
-          side: MaterialStateProperty.all(BorderSide(color: color ?? Colors.white)),
-          padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 20)),
+          side: MaterialStateProperty.all(
+              BorderSide(color: color ?? Colors.white)),
+          padding:
+              MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 20)),
         ),
         child: loading == true
             ? loader
             : Text(
-          text,
-          style: TextStyle(
-              fontSize: 17.0, fontFamily: AppFonts.Cabin,
-              color: textColor ?? color ?? Colors.white,
-              fontWeight: FontWeight.w700),
-        ),
+                text,
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontFamily: AppFonts.Cabin,
+                    color: textColor ?? color ?? Colors.white,
+                    fontWeight: FontWeight.w700),
+              ),
       );
     } else if (mode == ButtonMode.text) {
       return TextButton(
@@ -65,7 +67,8 @@ class Button extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              fontSize: 17.0, fontFamily: AppFonts.Cabin,
+              fontSize: 17.0,
+              fontFamily: AppFonts.Cabin,
               color: textColor ?? Colors.white,
               fontWeight: FontWeight.w700),
         ),
@@ -74,21 +77,25 @@ class Button extends StatelessWidget {
       return ElevatedButton(
         onPressed: (disabled == true || loading == true) ? null : onPressed,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0))),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.0))),
           elevation: MaterialStateProperty.all(0),
-          backgroundColor: MaterialStateProperty.all(color ?? AppColors.blueColor),
-          padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 20,)),
+          backgroundColor:
+              MaterialStateProperty.all(color ?? AppColors.blueColor),
+          padding: MaterialStateProperty.all(EdgeInsets.symmetric(
+            vertical: 20,
+          )),
         ),
         child: loading == true
             ? loader
             : Text(
-          text,
-          style: TextStyle(
-              fontSize: 16.0,
-              fontFamily: AppFonts.Cabin,
-              color: textColor ?? Colors.white,
-              fontWeight: FontWeight.w700),
-        ),
+                text,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: AppFonts.Cabin,
+                    color: textColor ?? Colors.white,
+                    fontWeight: FontWeight.w700),
+              ),
       );
     }
   }

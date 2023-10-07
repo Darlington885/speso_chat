@@ -1,3 +1,4 @@
+// @dart=2.9
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,10 +9,14 @@ import 'package:provider/provider.dart';
 import 'package:speso_chat_app/utils/loader.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
+import 'dart:io';
+
+import 'firebase_options.dart';
 
 Future<void>  main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // Setup orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,

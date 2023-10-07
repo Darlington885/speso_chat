@@ -8,7 +8,8 @@ import 'package:speso_chat_app/screens/registration_screen.dart';
 import '../screens/splash_screen.dart';
 
 class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic>? generateRoute(RouteSettings settings) {
+
     // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
 
@@ -25,9 +26,12 @@ class RouteGenerator {
 
 
       default:
+
       // If there is no such named route in the switch statement, e.g. /third
       // return MaterialPageRoute(builder: (_) => LoginScreen());
     }
+    return null;
+
   }
 
   static Route<dynamic> _errorRoute() {

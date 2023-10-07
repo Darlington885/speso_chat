@@ -22,21 +22,7 @@ class LoaderProvider extends ChangeNotifier {
 }
 
 
-// final loaderOne = Padding(
-//   padding: const EdgeInsets.all(18.0),
-//   child: SpinKitFadingCircle(
-//     color: AppColors.primarySecondaryColor,
-//     size: 50.0,
-//   ),
-// );
-//
-// final loaderTwo = Padding(
-//   padding: const EdgeInsets.all(18.0),
-//   child: SpinKitFadingCircle(
-//     color: Colors.white,
-//     size: 30.0,
-//   ),
-// );
+
 
 final loaderOne = Padding(
   padding: const EdgeInsets.all(18.0),
@@ -48,11 +34,3 @@ final loaderOne = Padding(
   ),
 );
 
-final loaderTwo = Padding(
-  padding: const EdgeInsets.all(18.0),
-  child: Center(
-    child: CupertinoActivityIndicator(
-      radius: 13,
-    ),
-  ),
-);

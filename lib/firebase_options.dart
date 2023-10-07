@@ -48,27 +48,27 @@ class DefaultFirebaseOptions {
 
   static  FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyAeEhYuyDQNRdd56LFqAsQ4xCoJMm7YNxY',
-    // appId: '1:698031591265:web:6946b57ffebe3fff417f20',
-    // messagingSenderId: '698031591265',
-    projectID: 'speso-6a5f0',
+    appId: '1:698031591265:web:6946b57ffebe3fff417f20',
+    messagingSenderId: '698031591265',
+    projectId: 'speso-6a5f0',
     //authDomain: 'speso-6a5f0.firebaseapp.com',
     storageBucket: 'speso-6a5f0.appspot.com',
   );
 
   static  FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB7gb2j66EE1HNMlytAAu3FIRSt3X5_JXk',
-    // appId: '1:698031591265:android:2b7c9ac847a31671417f20',
-    // messagingSenderId: '698031591265',
-    projectID: 'speso-6a5f0',
+    appId: '1:698031591265:android:2b7c9ac847a31671417f20',
+    messagingSenderId: '698031591265',
+    projectId: 'speso-6a5f0',
     storageBucket: 'speso-6a5f0.appspot.com',
   );
 
   static  FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDtaXyOiRASjKTxeAKSBHclrIYKPnFPtww',
-    // appId: '1:698031591265:ios:9e2fd9746fab4b0f417f20',
-    // messagingSenderId: '698031591265',
-    projectID: 'speso-6a5f0',
+    appId: '1:698031591265:ios:9e2fd9746fab4b0f417f20',
+    messagingSenderId: '698031591265',
+    projectId: 'speso-6a5f0',
     storageBucket: 'speso-6a5f0.appspot.com',
-    //iosBundleId: 'com.example.spesoChatApp',
+    iosBundleId: 'com.example.spesoChatApp',
   );
 }
